@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    background: linear-gradient(140deg, #e9edf3 0%, #dfe6ee 45%, #eef2f7 100%);
+    color: #1e293b;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+}
+
+@layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#10B981] text-white px-5 py-2.5 rounded-lg font-semibold tracking-wide hover:bg-[#059669] transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-md;
+  }
+
+  .btn-secondary {
+    @apply bg-[#f3f6fb] text-gray-700 border border-[#cfd8e3] px-5 py-2.5 rounded-lg font-medium hover:bg-[#e9eef5] transition-colors;
+  }
+
+  .btn-danger {
+    @apply bg-red-50 text-red-600 border border-red-200 px-4 py-2 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors;
+  }
+
+  .form-input {
+    @apply w-full border border-[#cfd8e3] bg-[#f8fbff] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#10B981] focus:border-transparent;
+  }
+
+  .form-label {
+    @apply block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1;
+  }
+
+  .card {
+    @apply bg-white/80 backdrop-blur-md border border-slate-200 rounded-lg shadow-xl;
+  }
+
+  .page-title {
+    @apply text-3xl md:text-4xl font-extrabold tracking-tight;
+    background: linear-gradient(90deg, #25324a 0%, #1f3e5a 45%, #0f8f72 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .page-subtitle {
+    @apply text-sm md:text-base text-slate-600 font-medium;
+  }
+}
