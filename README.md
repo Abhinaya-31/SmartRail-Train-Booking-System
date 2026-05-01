@@ -1,217 +1,225 @@
-# 🚂 smartRail — MERN Stack Train Booking System
+# 🚂 SmartRail — Train Booking System
 
-A full-stack train ticket booking web application built with the MERN stack (MongoDB, Express.js, React, Node.js). Designed to simulate a simplified, realistic train booking platform similar to IRCTC.
+A full-stack train ticket booking web application built using the MERN Stack (MongoDB, Express.js, React, Node.js).  
+This project simulates a realistic train booking platform with features like search, booking, cancellation, PNR tracking, admin control, and PDF ticket generation.
 
 ---
 
-## 📁 Project Structure
+## Project Architecture
+
+```
+Frontend (React)
+        ↓
+Backend API (Node.js + Express)
+        ↓
+Database (MongoDB)
+```
+
+### Flow
+User → UI → API → Backend → Database → Response → UI  
+
+---
+
+## Project Structure
 
 ```text
 smartRail/
 ├── frontend/                   # React frontend (Vite)
-│   ├── index.html              # Vite entry point
-│   ├── vite.config.js          # Vite configuration & proxy
-│   ├── tailwind.config.js      # Tailwind CSS v3 configuration
-│   ├── postcss.config.js       # PostCSS configuration for Tailwind
+│   ├── index.html
+│   ├── vite.config.js
+│   ├── tailwind.config.js
+│   ├── postcss.config.js
 │   └── src/
 │       ├── components/
-│       │   ├── Navbar.jsx          # Top navigation
-│       │   ├── TrainCard.jsx       # Train result card
-│       │   ├── BookingCard.jsx     # Booking history card
-│       │   └── ProtectedRoute.jsx  # Auth guard wrapper
+│       │   ├── Navbar.jsx
+│       │   ├── TrainCard.jsx
+│       │   ├── BookingCard.jsx
+│       │   └── ProtectedRoute.jsx
 │       ├── context/
-│       │   └── AuthContext.jsx     # Global auth state (React Context)
+│       │   └── AuthContext.jsx
 │       ├── pages/
-│       │   ├── Home.jsx            # Landing page
-│       │   ├── Login.jsx           # Login form
-│       │   ├── Register.jsx        # Registration form
-│       │   ├── SearchTrains.jsx    # Train search + results
-│       │   ├── BookTicket.jsx      # Booking form
-│       │   ├── MyBookings.jsx      # User booking history
-│       │   ├── AdminDashboard.jsx  # Admin panel
-│       │   ├── PNRStatus.jsx       # PNR check page
-│       │   └── Profile.jsx         # User profile page
+│       │   ├── Home.jsx
+│       │   ├── Login.jsx
+│       │   ├── Register.jsx
+│       │   ├── SearchTrains.jsx
+│       │   ├── BookTicket.jsx
+│       │   ├── MyBookings.jsx
+│       │   ├── AdminDashboard.jsx
+│       │   ├── PNRStatus.jsx
+│       │   └── Profile.jsx
 │       ├── utils/
-│       │   └── api.js              # Axios instance with auth interceptor
-│       ├── App.jsx                 # Routes + Toaster
-│       ├── index.jsx               # React entry
-│       └── index.css               # Tailwind + custom classes
+│       │   └── api.js
+│       ├── App.jsx
+│       ├── index.jsx
+│       └── index.css
 │
-├── backend/                    # Node.js + Express backend
+├── backend/
 │   ├── controllers/
-│   │   ├── authController.js       # Register, Login, GetMe
-│   │   ├── trainController.js      # Search, GetById, GetAll
-│   │   ├── bookingController.js    # Create, GetMine, Cancel, GetByPNR
-│   │   └── adminController.js      # AddTrain, AllBookings, DeleteTrain
+│   │   ├── authController.js
+│   │   ├── trainController.js
+│   │   ├── bookingController.js
+│   │   └── adminController.js
 │   ├── routes/
 │   │   ├── auth.js
 │   │   ├── trains.js
 │   │   ├── bookings.js
 │   │   └── admin.js
 │   ├── middleware/
-│   │   └── authMiddleware.js       # protect + adminOnly
-│   ├── index.js                    # Express app entry
-│   └── .env.example                # Environment variable template
+│   │   └── authMiddleware.js
+│   ├── index.js
+│   └── .env.example
 │
-└── database/                   # Database logic and models
+└── database/
     ├── models/
-    │   ├── User.js                 # User schema
-    │   ├── Train.js                # Train schema
-    │   └── Booking.js              # Booking schema with PNR
-    └── seed.js                     # DB seed script
+    │   ├── User.js
+    │   ├── Train.js
+    │   └── Booking.js
+    └── seed.js
 ```
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 
-| Layer     | Technology                      |
-|-----------|---------------------------------|
-| Frontend  | React 18, Vite, React Router v6 |
-| Styling   | Tailwind CSS v3 + PostCSS       |
-| HTTP      | Axios                           |
-| Toast     | react-hot-toast                 |
-| Backend   | Node.js + Express.js            |
-| Auth      | JWT (jsonwebtoken) + bcryptjs   |
-| Database  | MongoDB + Mongoose              |
+- **Frontend:** React, React Router, Axios  
+- **Styling:** Tailwind CSS  
+- **Backend:** Node.js, Express  
+- **Authentication:** JWT, bcrypt  
+- **Database:** MongoDB, Mongoose  
 
 ---
 
-## 🚀 Getting Started
+## Features
 
-### Prerequisites
-- Node.js v16+
-- MongoDB (local or Atlas)
-- npm
-
----
-
-### 1. Clone the project
-
-```bash
-git clone <your-repo-url>
-cd smartRail
-```
+### 👤 User
+- Registration & Login (JWT Authentication)  
+- Search trains (source → destination → date)  
+- View train details  
+- Ticket booking & cancellation  
+- Booking history  
+- PNR status check  
+- PDF ticket download  
 
 ---
 
-### 2. Backend Setup
+### 🚆 Train
+- Train number & name  
+- Source & destination  
+- Timings  
+- Seat availability  
+- Fare details  
 
-Open a terminal and run:
+---
+
+### 🎟️ Booking
+- Seat availability validation  
+- Fare calculation  
+- PNR generation  
+- Seat deduction & restoration  
+- PDF ticket generation  
+
+---
+
+### 🧑‍💼 Admin
+- Add new trains  
+- Delete trains  
+- View all bookings  
+
+---
+
+## Workflow
+
+### Step 1: User Login
+User logs in → JWT token generated  
+
+### Step 2: Search Train
+User enters details → backend filters trains  
+
+### Step 3: Book Ticket
+- Check availability  
+- Deduct seats  
+- Create booking  
+- Generate PNR  
+
+### Step 4: Cancel Ticket
+- Update status  
+- Restore seats  
+
+### Step 5: Download Ticket
+- PDF ticket download  
+
+---
+
+## API Design
+
+### Auth
+- POST /api/auth/register  
+- POST /api/auth/login  
+
+### Trains
+- GET /api/trains  
+- GET /api/trains/search  
+
+### Bookings
+- POST /api/bookings  
+- GET /api/bookings/my  
+- PUT /api/bookings/:id/cancel  
+
+### Admin
+- POST /api/admin/trains  
+- GET /api/admin/bookings  
+- DELETE /api/admin/trains/:id  
+
+---
+
+## Security Features
+
+- Password hashing using bcrypt  
+- JWT authentication  
+- Protected routes using middleware  
+
+---
+
+## Getting Started
+
+### Backend
 ```bash
 cd backend
 npm install
-```
-
-Create a `.env` file in the `backend` folder based on `.env.example`:
-```text
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/trainbooking
-JWT_SECRET=change_this_to_a_strong_secret
-```
-
-Seed the database with sample trains + admin user:
-```bash
 npm run seed
-```
-
-Start the server:
-```bash
 npm run dev
 ```
 
----
-
-### 3. Frontend Setup
-
-Open a **new** terminal window and run:
+### Frontend
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-The frontend runs on `http://localhost:3000` and proxies API calls to the backend on `http://localhost:5000` via `vite.config.js`.
+---
+
+## Test Credentials
+
+Admin  
+Email: admin@trainbook.com  
+Password: admin123  
 
 ---
 
-## 🔑 Test Credentials
+## Key Concepts Used
 
-| Role  | Email                  | Password  |
-|-------|------------------------|-----------|
-| Admin | admin@trainbook.com    | admin123  |
-| User  | Register a new account | —         |
-
----
-
-## 🌐 API Endpoints
-
-### Auth
-| Method | Endpoint             | Access  | Description      |
-|--------|----------------------|---------|------------------|
-| POST   | /api/auth/register   | Public  | Register user    |
-| POST   | /api/auth/login      | Public  | Login user       |
-| GET    | /api/auth/me         | Private | Get current user |
-
-### Trains
-| Method | Endpoint                  | Access  | Description          |
-|--------|---------------------------|---------|----------------------|
-| GET    | /api/trains/search        | Private | Search by route+date |
-| GET    | /api/trains/:id           | Private | Get train details    |
-| GET    | /api/trains               | Private | Get all trains       |
-
-### Bookings
-| Method | Endpoint                    | Access  | Description         |
-|--------|-----------------------------|---------|---------------------|
-| POST   | /api/bookings               | Private | Create booking      |
-| GET    | /api/bookings/my            | Private | My booking history  |
-| PUT    | /api/bookings/:id/cancel    | Private | Cancel booking      |
-
-### Admin
-| Method | Endpoint                    | Admin Only | Description        |
-|--------|-----------------------------|------------|--------------------|
-| POST   | /api/admin/trains           | ✅         | Add new train      |
-| GET    | /api/admin/bookings         | ✅         | View all bookings  |
-| DELETE | /api/admin/trains/:id       | ✅         | Delete train       |
+- MERN Stack Architecture  
+- REST API  
+- JWT Authentication  
+- Middleware  
+- MVC Pattern  
+- CRUD Operations  
+- React Hooks  
+- Context API  
 
 ---
 
-## ✨ Features
+## Conclusion
 
-- **User Registration & Login** with JWT authentication
-- **Train Search** by source, destination, and date (with day-of-week filtering)
-- **Real-time Seat Availability** check before booking
-- **Ticket Booking** with automatic PNR generation
-- **Seat Deduction** after booking + seat restoration on cancellation
-- **Booking History** with status filter (All / Confirmed / Cancelled)
-- **Cancel Booking** with confirmation prompt
-- **Admin Panel** — add trains, view all bookings, delete trains
-- **Protected Routes** — unauthenticated users redirected to login
-- **Toast Notifications** for success/error feedback
-- **Responsive UI** — beautifully themed matching UI, works on mobile and desktop
-
----
-
-## 📝 Notes for Developers
-
-- Passwords are hashed using `bcryptjs` before storing in MongoDB
-- JWT tokens expire in 7 days; stored in `localStorage`
-- Axios interceptor auto-attaches the Bearer token to every request
-- `npm run seed` can be re-run to reset trains; it won't duplicate trains
-- The `proxy` is configured in `frontend/vite.config.js` to route API calls in development without CORS issues.
-- For production, set `VITE_API_URL` in the frontend `.env` to point to the backend URL.
-- The project runs on **Vite** for incredibly fast development and build times instead of Create React App.
-
----
-
-## 🎓 Academic Notes
-
-This project demonstrates:
-- Full MERN stack integration
-- Modern build tooling with Vite and PostCSS
-- RESTful API design
-- JWT-based authentication flow
-- Mongoose schema design with relationships
-- React Context API for global state
-- Component-based architecture with separation of concerns
-- Protected routing on both frontend and backend
+smartRail demonstrates a complete MERN stack application with secure authentication, structured architecture, and real-world booking functionality.
